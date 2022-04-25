@@ -3,11 +3,19 @@
 <mapper namespace="com.iblotus.javamybatisdemo.mapper.UserMapper">
 
     <select id="selectByName" resultType="User">
-        SELECT * FROM user where name = #{name}
+        SELECT *
+        FROM user
+        where name = #{name}
     </select>
 
     <select id="selectByMyWrapper" resultType="User">
-        SELECT * FROM user ${ew.customSqlSegment}
+        SELECT *
+        FROM user ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPageVo" resultType="User">
+        SELECT *
+        FROM user
     </select>
 
 </mapper>

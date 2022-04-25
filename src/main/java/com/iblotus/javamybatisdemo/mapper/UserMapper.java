@@ -2,7 +2,9 @@ package com.iblotus.javamybatisdemo.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iblotus.javamybatisdemo.domain.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,4 +27,11 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     List<User> selectByName(@Param("name") String name);
+
+    /**
+     *
+     * @param page
+     * @return
+     */
+    IPage<User> selectPageVo(IPage<?> page);
 }

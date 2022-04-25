@@ -1,6 +1,8 @@
 package com.iblotus.javamybatisdemo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iblotus.javamybatisdemo.domain.User;
 import com.iblotus.javamybatisdemo.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +39,13 @@ public class UserController {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.like("name", "J%");
         List<User> users = userMapper.selectByMyWrapper(wrapper);
+        return users;
+    }
+
+    @GetMapping("/user/findwithpage")
+    public IPage<User> selectWithPage() {
+        Page<User> page = new Page<>(3, 2);
+        IPage<User> users = userMapper.selectPageVo(page);
         return users;
     }
 }
